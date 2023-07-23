@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * long_to_string - a functio that converts a number to a string.
+ * long_to_string - a function that converts a number to a string.
  * @number: number to be converten in an string.
  * @string: buffer to save the number as string.
  * @base: base to convert number
