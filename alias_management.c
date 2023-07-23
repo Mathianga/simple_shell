@@ -2,7 +2,7 @@
 
 /**
  * print_alias - a function that add, remove or show aliases
- * @data: struct for the program's data
+ * @data: program's data struct
  * @alias: name of the alias to be printed
  * Return: zero if sucess, or other number if its declared in the arguments
  */
@@ -26,6 +26,7 @@ int print_alias(data_of_program *data, char *alias)
 					if (data->alias_list[i][j] == '=')
 						break;
 				}
+
 				buffer[j + 1] = '\0';
 				buffer_add(buffer, "'");
 				buffer_add(buffer, data->alias_list[i] + j + 1);
