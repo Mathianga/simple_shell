@@ -26,6 +26,7 @@ int print_alias(data_of_program *data, char *alias)
 					if (data->alias_list[i][j] == '=')
 						break;
 				}
+
 				buffer[j + 1] = '\0';
 				buffer_add(buffer, "'");
 				buffer_add(buffer, data->alias_list[i] + j + 1);
