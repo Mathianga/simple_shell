@@ -91,8 +91,8 @@ int set_work_directory(data_of_program *data, char *new_dir)
 
 /**
  * builtin_help - shows the environment where the shell runs
- * @data: struct for the program's data
- * Return: zero if sucess, or other number if its declared in the arguments
+ * @data: struct for the prog's data
+ * Return: zero if sucess, or other num if its declared in the arguments
  */
 int builtin_help(data_of_program *data)
 {
