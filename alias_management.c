@@ -9,27 +9,27 @@
 
 int print_alias(data_of_program *data, char *alias)
 {
-	int i, j, alias_length;
+	int m, n, alias_length;
 	char buffer[250] = {'\0'};
 
 	if (data->alias_list)
 	{
 		alias_length = str_length(alias);
-		for (i = 0; data->alias_list[i]; i++)
+		for (m = 0; data->alias_list[m]; m++)
 		{
-			if (!alias || (str_compare(data->alias_list[i], alias, alias_length)
-				&&	data->alias_list[i][alias_length] == '='))
+			if (!alias || (str_compare(data->alias_list[m], alias, alias_length)
+				&&	data->alias_list[m][alias_length] == '='))
 			{
-				for (j = 0; data->alias_list[i][j]; j++)
+				for (n = 0; data->alias_list[m][n]; n++)
 				{
-					buffer[j] = data->alias_list[i][j];
-					if (data->alias_list[i][j] == '=')
+					buffer[n] = data->alias_list[m][n];
+					if (data->alias_list[m][n] == '=')
 						break;
 				}
 
-				buffer[j + 1] = '\0';
+				buffer[n + 1] = '\0';
 				buffer_add(buffer, "'");
-				buffer_add(buffer, data->alias_list[i] + j + 1);
+				buffer_add(buffer, data->alias_list[m] + n + 1);
 				buffer_add(buffer, "'\n");
 				_print(buffer);
 			}
@@ -48,19 +48,19 @@ int print_alias(data_of_program *data, char *alias)
 
 char *get_alias(data_of_program *data, char *name)
 {
-	int i, alias_length;
+	int m, alias_length;
 
 	if (name == NULL || data->alias_list == NULL)
 		return (NULL);
 
 	alias_length = str_length(name);
 
-	for (i = 0; data->alias_list[i]; i++)
+	for (m = 0; data->alias_list[m]; m++)
 	{
-		if (str_compare(name, data->alias_list[i], alias_length) &&
-			data->alias_list[i][alias_length] == '=')
+		if (str_compare(name, data->alias_list[m], alias_length) &&
+			data->alias_list[m][alias_length] == '=')
 		{
-			return (data->alias_list[i] + alias_length + 1);
+			return (data->alias_list[m] + alias_length + 1);
 		}
 	}
 
@@ -77,26 +77,26 @@ char *get_alias(data_of_program *data, char *name)
 
 int set_alias(char *alias_string, data_of_program *data)
 {
-	int i, j;
+	int m, n;
 	char buffer[250] = {'0'}, *temp = NULL;
 
 	if (alias_string == NULL ||  data->alias_list == NULL)
 		return (1);
 
-	for (i = 0; alias_string[i]; i++)
-		if (alias_string[i] != '=')
-			buffer[i] = alias_string[i];
+	for (m = 0; alias_string[m]; m++)
+		if (alias_string[m] != '=')
+			buffer[m] = alias_string[m];
 		else
 		{
-			temp = get_alias(data, alias_string + i + 1);
+			temp = get_alias(data, alias_string + m + 1);
 			break;
 		}
 
-	for (j = 0; data->alias_list[j]; j++)
-		if (str_compare(buffer, data->alias_list[j], i) &&
-			data->alias_list[j][i] == '=')
+	for (n = 0; data->alias_list[n]; n++)
+		if (str_compare(buffer, data->alias_list[n], m) &&
+			data->alias_list[n][m] == '=')
 		{
-			free(data->alias_list[j]);
+			free(data->alias_list[n]);
 			break;
 		}
 
@@ -108,6 +108,6 @@ int set_alias(char *alias_string, data_of_program *data)
 		data->alias_list[j] = str_duplicate(buffer);
 	}
 	else
-		data->alias_list[j] = str_duplicate(alias_string);
+		data->alias_list[n] = str_duplicate(alias_string);
 	return (0);
 }
