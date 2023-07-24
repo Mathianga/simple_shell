@@ -100,13 +100,13 @@ void expand_alias(data_of_program *data)
  */
 int buffer_add(char *buffer, char *str_to_add)
 {
-	int length, m;
+	int length, n;
 
 	length = str_length(buffer);
-	for (m = 0; str_to_add[m]; i++)
+	for (n = 0; str_to_add[n]; i++)
 	{
-		buffer[length + m] = str_to_add[m];
+		buffer[length + n] = str_to_add[n];
 	}
-	buffer[length + m] = '\0';
-	return (length + m);
+	buffer[length + n] = '\0';
+	return (length + n);
 }
