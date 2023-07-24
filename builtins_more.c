@@ -7,13 +7,13 @@
  */
 int builtin_exit(data_of_program *data)
 {
-	int i;
+	int m;
 
 	if (data->tokens[1] != NULL)
 	{/*if exists arg for exit, check if is a number*/
-		for (i = 0; data->tokens[1][i]; i++)
-			if ((data->tokens[1][i] < '0' || data->tokens[1][i] > '9')
-				&& data->tokens[1][i] != '+')
+		for (m = 0; data->tokens[1][m]; m++)
+			if ((data->tokens[1][m] < '0' || data->tokens[1][m] > '9')
+				&& data->tokens[1][m] != '+')
 			{/*if is not a number*/
 				errno = 2;
 				return (2);
@@ -96,7 +96,7 @@ int set_work_directory(data_of_program *data, char *new_dir)
  */
 int builtin_help(data_of_program *data)
 {
-	int i, length = 0;
+	int m, length = 0;
 	char *mensajes[6] = {NULL};
 
 	mensajes[0] = HELP_MSG;
@@ -119,13 +119,13 @@ int builtin_help(data_of_program *data)
 	mensajes[4] = HELP_UNSETENV_MSG;
 	mensajes[5] = HELP_CD_MSG;
 
-	for (i = 0; mensajes[i]; i++)
+	for (m = 0; mensajes[m]; m++)
 	{
 		/*print the length of string */
 		length = str_length(data->tokens[1]);
-		if (str_compare(data->tokens[1], mensajes[i], length))
+		if (str_compare(data->tokens[1], mensajes[m], length))
 		{
-			_print(mensajes[i] + length + 1);
+			_print(mensajes[m] + length + 1);
 			return (1);
 		}
 	}
@@ -142,18 +142,18 @@ int builtin_help(data_of_program *data)
  */
 int builtin_alias(data_of_program *data)
 {
-	int i = 0;
+	int m = 0;
 
 	/* if there are no arguments, print all environment */
 	if (data->tokens[1] == NULL)
 		return (print_alias(data, NULL));
 
-	while (data->tokens[++i])
+	while (data->tokens[++m])
 	{/* if there are arguments, set or print each env variable*/
-		if (count_characters(data->tokens[i], "="))
-			set_alias(data->tokens[i], data);
+		if (count_characters(data->tokens[m], "="))
+			set_alias(data->tokens[m], data);
 		else
-			print_alias(data, data->tokens[i]);
+			print_alias(data, data->tokens[m]);
 	}
 
 	return (0);
