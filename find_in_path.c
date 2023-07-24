@@ -10,7 +10,7 @@ int check_file(char *full_path);
 
 int find_program(data_of_program *data)
 {
-	int i = 0, ret_code = 0;
+	int m = 0, ret_code = 0;
 	char **directories;
 
 	if (!data->command_name)
@@ -31,15 +31,15 @@ int find_program(data_of_program *data)
 		errno = 127;
 		return (127);
 	}
-	for (i = 0; directories[i]; i++)
+	for (m = 0; directories[m]; m++)
 	{
-		directories[i] = str_concat(directories[i], data->tokens[0]);
-		ret_code = check_file(directories[i]);
+		directories[m] = str_concat(directories[m], data->tokens[0]);
+		ret_code = check_file(directories[m]);
 		if (ret_code == 0 || ret_code == 126)
 		{
 			errno = 0;
 			free(data->tokens[0]);
-			data->tokens[0] = str_duplicate(directories[i]);
+			data->tokens[0] = str_duplicate(directories[m]);
 			free_array_of_pointers(directories);
 			return (ret_code);
 		}
@@ -58,7 +58,7 @@ int find_program(data_of_program *data)
 
 char **tokenize_path(data_of_program *data)
 {
-	int i = 0;
+	int m = 0;
 	int counter_directories = 2;
 	char **tokens = NULL;
 	char *PATH;
@@ -71,19 +71,19 @@ char **tokenize_path(data_of_program *data)
 
 	PATH = str_duplicate(PATH);
 
-	for (i = 0; PATH[i]; i++)
+	for (m = 0; PATH[m]; m++)
 	{
-		if (PATH[i] == ':')
+		if (PATH[m] == ':')
 			counter_directories++;
 	}
 
 	tokens = malloc(sizeof(char *) * counter_directories);
 
-	i = 0;
-	tokens[i] = str_duplicate(_strtok(PATH, ":"));
-	while (tokens[i++])
+	m = 0;
+	tokens[m] = str_duplicate(_strtok(PATH, ":"));
+	while (tokens[m++])
 	{
-		tokens[i] = str_duplicate(_strtok(NULL, ":"));
+		tokens[m] = str_duplicate(_strtok(NULL, ":"));
 	}
 
 	free(PATH);
