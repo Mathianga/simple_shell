@@ -74,11 +74,11 @@ int _atoi(char *s)
 
 int count_characters(char *string, char *character)
 {
-	int i = 0, counter = 0;
+	int m = 0, counter = 0;
 
-	for (; string[i]; i++)
+	for (; string[m]; m++)
 	{
-		if (string[i] == character[0])
+		if (string[m] == character[0])
 			counter++;
 	}
 	return (counter);
