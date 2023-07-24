@@ -1,10 +1,11 @@
 #include "shell.h"
 
 /**
- * builtin_env - shows the enviro where the shell runs
+ * builtin_env - a function that shows the enviro where the shell runs
  * @data: struct for the program's data
  * Return: zero if sucess, or other num if its declared in the arg
  */
+
 int builtin_env(data_of_program *data)
 {
 	int i;
