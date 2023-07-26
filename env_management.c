@@ -51,8 +51,13 @@ int env_set_key(char *key, char *value, data_of_program *data)
 
 	for (i = 0; data->env[i]; i++)
 	{/* Iterates through the environ and check for coincidence of the vame */
+<<<<<<< HEAD
 		if (str_compare(key, data->env[i], key_length) &&
 		 data->env[i][key_length] == '=')
+=======
+		if (str_compare(key, data->env[m], key_length) &&
+		 data->env[m][key_length] == '=')
+>>>>>>> 70a162ec179dd6624799ef6cc993b3ecd352de89
 		{/* If key already exists */
 			is_new_key = 0;
 			/* free the entire variable, it is new created below */
