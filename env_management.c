@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
- * env_get_key - gets the val of an env var
- * @key: the env var of interest
+ * env_get_key - gets the value of an environment variable
+ * @key: the environment variable of interest
  * @data: struct of the program's data
- * Return: a pointer to the value of the var or NULL if it doesn't exist
+ * Return: a pointer to the value of the variable or NULL if it doesn't exist
  */
 char *env_get_key(char *key, data_of_program *data)
 {
