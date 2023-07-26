@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- * expand_variables - a function that expand variables
- * @data: a pointer to a struct of the program's data
+ * expand_variables -it  expand variables
+ * @data: a pointer to a structure of the program's data
+ *
  * Return: nothing, but sets errno.
  */
-
 void expand_variables(data_of_program *data)
 {
 	int i, j;
@@ -51,11 +51,11 @@ void expand_variables(data_of_program *data)
 }
 
 /**
- * expand_alias - a function that expans aliases
+ * expand_alias - expans aliases
  * @data: a pointer to a struct of the program's data
+ *
  * Return: nothing, but sets errno.
  */
-
 void expand_alias(data_of_program *data)
 {
 	int i, j, was_expanded = 0;
@@ -93,20 +93,20 @@ void expand_alias(data_of_program *data)
 }
 
 /**
- * buffer_add - a function that append string at end of the buffer
+ * buffer_add - append string at end of the buffer
  * @buffer: buffer to be filled
  * @str_to_add: string to be copied in the buffer
  * Return: nothing, but sets errno.
  */
 int buffer_add(char *buffer, char *str_to_add)
 {
-	int length, n;
+	int length, i;
 
 	length = str_length(buffer);
-	for (n = 0; str_to_add[n]; i++)
+	for (i = 0; str_to_add[i]; i++)
 	{
-		buffer[length + n] = str_to_add[n];
+		buffer[length + i] = str_to_add[i];
 	}
-	buffer[length + n] = '\0';
-	return (length + n);
+	buffer[length + i] = '\0';
+	return (length + i);
 }

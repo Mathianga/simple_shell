@@ -105,7 +105,7 @@ int set_alias(char *alias_string, data_of_program *data)
 	{
 		buffer_add(buffer, "=");
 		buffer_add(buffer, temp);
-		data->alias_list[j] = str_duplicate(buffer);
+		data->alias_list[m] = str_duplicate(buffer);
 	}
 	else
 		data->alias_list[n] = str_duplicate(alias_string);
