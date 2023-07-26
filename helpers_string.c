@@ -143,13 +143,13 @@ char *str_concat(char *string1, char *string2)
 void str_reverse(char *string)
 {
 
-	int i = 0, length = str_length(string) - 1;
+	int m = 0, length = str_length(string) - 1;
 	char hold;
 
-	while (i < length)
+	while (m < length)
 	{
-		hold = string[i];
-		string[i++] = string[length];
+		hold = string[m];
+		string[m++] = string[length];
 		string[length--] = hold;
 	}
 }
